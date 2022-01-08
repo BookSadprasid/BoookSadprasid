@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply min-h-screen font-mulish font-400 text-darkGray;
+    line-height: 1;
+  }
+
+  p {
+    @apply text-18;
+    line-height: 22px;
+  }
+}
+
+@layer components {
+  /* Target all classes with substring "..tag.." */
+  [class*="tag"] {
+    @apply text-rose font-700 mb-2;
+  }
+
+  .tag-sm {
+    @apply text-18;
+  }
+
+  .tag-lg {
+    @apply text-24;
+  }
+}
+
+@layer utilities {
+  /* Set the container to be 100% so that we can give it a background colour
+  that covers edge to edge. */
+  .container {
+    @apply max-w-[100%];
+    /* All children will then follow the max-width constraint for the current
+    screen breakpoint */
+    > * {
+      @apply max-w-[theme('screens.desktop')] m-auto;
+    }
+  }
+}
